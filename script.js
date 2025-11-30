@@ -187,12 +187,12 @@ function updateMessage(id, rawContent) {
 }
 
 async function callQwen(prompt, imageBase64 = null) {
-    let systemPrompt = "Ты ShamanAi — умный помощник на базе шамана. Отвечай на русском. Используй LaTeX ($...$) для формул. перед ответом пиши шаман нарешал:";
+    let systemPrompt = "Ты ShamanAi — умный помощник на базе шамана. Отвечай на русском. Используй LaTeX ($...$) для формул.";
 
     if (currentMode === 'graph') {
-        systemPrompt += " Пользователь просит график. Верни ТОЛЬКО JSON для Plotly.js в ```json ... ```.перед ответом пиши шаман нарешал:";
+        systemPrompt += " Пользователь просит график. Верни ТОЛЬКО JSON для Plotly.js в ```json ... ```.";
     } else if (currentMode === 'draw') {
-        systemPrompt += " Пользователь хочет рисунок. Верни ТОЛЬКО SVG в ```svg ... ``` с чёрными линиями.перед ответом пиши шаман нарешал:";
+        systemPrompt += " Пользователь хочет рисунок. Верни ТОЛЬКО SVG в ```svg ... ``` с чёрными линиями.";
     }
 
     const messages = [{ role: "system", content: systemPrompt }];
@@ -229,5 +229,6 @@ async function callQwen(prompt, imageBase64 = null) {
     const data = await response.json();
     return data.choices?.[0]?.message?.content || "Нет ответа.";
 }
+
 
 
