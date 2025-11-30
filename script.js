@@ -1,4 +1,4 @@
-// 🔑 ЕДИНЫЙ API-КЛЮЧ ДЛЯ ВСЕХ (замените на свой!)
+
 const OPENROUTER_API_KEY = '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'; // ← СЮДА ВСТАВЬ СВОЙ КЛЮЧ!
 
 const chatContainer = document.getElementById('chat-container');
@@ -18,8 +18,7 @@ const sidebar = document.getElementById('sidebar');
 let currentMode = 'chat';
 let currentImageBase64 = null;
 
-// Показываем модалку один раз (если хочешь)
-// showModal();
+
 
 function showModal() {
     modal.style.display = 'flex';
@@ -33,14 +32,14 @@ settingsBtn.addEventListener('click', () => {
     showModal();
 });
 
-// Боковое меню
+
 menuToggle.addEventListener('click', () => {
     sidebar.classList.toggle('open');
      e.stopPropagation(); // предотвращаем срабатывание клика по документу
     sidebar.classList.toggle('open');
 });
 
-// Навигация
+
 navItems.forEach(item => {
     item.addEventListener('click', () => {
         navItems.forEach(nav => nav.classList.remove('active'));
@@ -49,7 +48,7 @@ navItems.forEach(item => {
     });
 });
 
-// Изображения
+
 fileInput.addEventListener('change', () => {
     const file = fileInput.files[0];
     if (file) {
@@ -71,7 +70,7 @@ function clearImage() {
     imagePreviewContainer.classList.add('hidden');
 }
 
-// Отправка
+
 sendBtn.addEventListener('click', sendMessage);
 userInput.addEventListener('keypress', (e) => {
     if (e.key === 'Enter' && !e.shiftKey) {
@@ -104,7 +103,7 @@ async function sendMessage() {
     }
 }
 
-// ... остальные функции (addMessage, updateMessage, callQwen) без изменений
+
 
 function addMessage(text, sender, imgSrc = null, isLoading = false) {
     const div = document.createElement('div');
@@ -229,6 +228,7 @@ async function callQwen(prompt, imageBase64 = null) {
     const data = await response.json();
     return data.choices?.[0]?.message?.content || "Нет ответа.";
 }
+
 
 
 
