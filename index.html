@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>shamanAi</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Pacifico&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+    <script src="https://cdn.plot.ly/plotly-2.24.1.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
+    <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+</head>
+<body>
+
+    <div class="background-gradient"></div>
+
+    <header>
+        <div class="logo">shamanAi</div>
+        <button id="settings-btn"><i class="fa-solid fa-key"></i></button>
+    </header>
+
+    <main id="chat-container">
+        <div class="welcome-message">
+            <h2>Дароу</h2>
+            <p>Я умею решать задачи, в будущем, и рисовать и строить задачи по геометрии.</p>
+        </div>
+        </main>
+
+    <div id="image-preview-container" class="hidden">
+        <img id="image-preview" src="" alt="Preview">
+        <button id="clear-image"><i class="fa-solid fa-times"></i></button>
+    </div>
+
+    <div class="input-area">
+        <label for="file-input" class="attach-btn">
+            <i class="fa-solid fa-camera"></i>
+        </label>
+        <input type="file" id="file-input" accept="image/*" hidden>
+        
+        <textarea id="user-input" placeholder="Спроси или отправь фото задачи..." rows="1"></textarea>
+        
+        <button id="send-btn">
+            <i class="fa-solid fa-paper-plane"></i>
+        </button>
+    </div>
+
+    <nav class="bottom-nav">
+        <button class="nav-item active" data-mode="chat">
+            <i class="fa-solid fa-comment"></i>
+            <span>Чат</span>
+        </button>
+        <button class="nav-item" data-mode="draw">
+            <i class="fa-solid fa-pen-ruler"></i>
+            <span>Рисунки</span>
+        </button>
+        <button class="nav-item" data-mode="graph">
+            <i class="fa-solid fa-chart-line"></i>
+            <span>Графики</span>
+        </button>
+    </nav>
+
+    <div id="api-modal" class="modal">
+        <div class="modal-content">
+            <h3>Настройка ключа</h3>
+            <p>Вставь свой ключ:</p>
+            <input type="password" id="api-key-input" placeholder="Вставь ключ сюда">
+            <button id="save-key-btn">Сохранить</button>
+            <p class="small-text"><a href="https://aistudio.google.com/app/apikey" target="_blank">Получить ключ здесь</a></p>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
