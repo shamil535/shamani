@@ -13,6 +13,16 @@
 </head>
 <body>
 
+    <!-- Боковое меню -->
+    <div id="sidebar" class="sidebar">
+        <a href="https://t.me/+E_g5BnVMVnUwMGMy" target="_blank" class="sidebar-link">
+            <i class="fa-brands fa-telegram"></i> ТГК, подписочку ❤️
+        </a>
+    </div>
+    <div id="menu-toggle" class="menu-toggle">
+        <i class="fa-solid fa-bars"></i>
+    </div>
+
     <div class="background-gradient"></div>
 
     <header>
@@ -23,9 +33,9 @@
     <main id="chat-container">
         <div class="welcome-message">
             <h2>Дароу</h2>
-            <p>Я умею решать задачи, в будущем, и рисовать и строить задачи по геометрии.</p>
+            <p>Пока что только задачки, мб в будущем картинки и видосы.</p>
         </div>
-        </main>
+    </main>
 
     <div id="image-preview-container" class="hidden">
         <img id="image-preview" src="" alt="Preview">
@@ -37,9 +47,7 @@
             <i class="fa-solid fa-camera"></i>
         </label>
         <input type="file" id="file-input" accept="image/*" hidden>
-        
         <textarea id="user-input" placeholder="Спроси или отправь фото задачи..." rows="1"></textarea>
-        
         <button id="send-btn">
             <i class="fa-solid fa-paper-plane"></i>
         </button>
@@ -62,11 +70,12 @@
 
     <div id="api-modal" class="modal">
         <div class="modal-content">
-            <h3>Настройка ключа</h3>
-            <p>Вставь свой ключ:</p>
-            <input type="password" id="api-key-input" placeholder="Вставь ключ сюда">
-            <button id="save-key-btn">Сохранить</button>
-            <p class="small-text"><a href="https://aistudio.google.com/app/apikey" target="_blank">Получить ключ здесь</a></p>
+            <h3>SHAMANai</h3>
+            <p>Ниче не надо пока что...</p>
+            <button id="close-modal-btn">Понятно</button>
+            <p class="small-text">
+                <a href="https://t.me/+E_g5BnVMVnUwMGMy" target="_blank">Подробнее об shamanai</a>
+            </p>
         </div>
     </div>
 
