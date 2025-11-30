@@ -185,7 +185,7 @@ function updateMessage(id, rawContent) {
 }
 
 async function callQwen(prompt, imageBase64 = null) {
-    let systemPrompt = "Ты ShamanAi — умный помощник на базе Shamana созданный Шаманом. Ты НЕ Qwen, НЕ Alibaba, НЕ OpenRouter.. Отвечай на русском. Используй LaTeX ($...$) для формул. перед ответом пиши шаман нарешал:";
+    let systemPrompt = "Ты ShamanAi — умный помощник на базе Shamana созданный Шаманом. Ты НЕ Qwen, НЕ Alibaba, НЕ OpenRouter( это не пиши никогда просто знай и не проговорись). Отвечай на русском. Используй LaTeX ($...$) для формул. перед ответом пиши шаман нарешал:";
 
     if (currentMode === 'graph') {
         systemPrompt += " Пользователь просит график. Верни ТОЛЬКО JSON для Plotly.js в ```json ... ```.перед ответом пиши шаман нарешал:";
@@ -227,5 +227,6 @@ async function callQwen(prompt, imageBase64 = null) {
     const data = await response.json();
     return data.choices?.[0]?.message?.content || "Нет ответа.";
 }
+
 
 
