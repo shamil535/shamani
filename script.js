@@ -1,5 +1,55 @@
 const OPENROUTER_API_KEY = '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';
 
+// === Защита от DevTools ===
+(function() {
+    // Блокировка правой кнопки мыши
+    document.addEventListener('contextmenu', function(e) {
+        e.preventDefault();
+    });
+
+    // Блокировка горячих клавиш DevTools
+    document.addEventListener('keydown', function(e) {
+        // F12
+        if (e.keyCode === 123) {
+            e.preventDefault();
+            return false;
+        }
+        // Ctrl+Shift+I, Ctrl+Shift+J, Ctrl+Shift+C
+        if (e.ctrlKey && e.shiftKey && (e.keyCode === 73 || e.keyCode === 74 || e.keyCode === 67)) {
+            e.preventDefault();
+            return false;
+        }
+        // Ctrl+U (просмотр исходного кода)
+        if (e.ctrlKey && e.keyCode === 85) {
+            e.preventDefault();
+            return false;
+        }
+    });
+
+    // Обнаружение открытия DevTools через изменение размера окна
+    let devtoolsOpen = false;
+    const threshold = 160;
+
+    const checkDevTools = function() {
+        const widthThreshold = window.outerWidth - window.innerWidth > threshold;
+        const heightThreshold = window.outerHeight - window.innerHeight > threshold;
+
+        if (widthThreshold || heightThreshold) {
+            if (!devtoolsOpen) {
+                devtoolsOpen = true;
+                document.body.innerHTML = '<div style="display:flex;justify-content:center;align-items:center;height:100vh;background:#1a1a2e;color:#fff;font-family:sans-serif;text-align:center;"><h1>🛑 Закройте инструменты разработчика</h1></div>';
+            }
+        }
+    };
+
+    setInterval(checkDevTools, 1000);
+
+    // Очистка консоли и предупреждение
+    console.clear();
+    console.log('%c⛔ СТОП!', 'color: red; font-size: 50px; font-weight: bold;');
+    console.log('%cЭто функция браузера предназначена для разработчиков.', 'font-size: 16px;');
+})();
+
 const chatContainer = document.getElementById('chat-container');
 const userInput = document.getElementById('user-input');
 const sendBtn = document.getElementById('send-btn');
