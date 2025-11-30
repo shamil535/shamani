@@ -1,5 +1,5 @@
 // 🔑 ЕДИНЫЙ API-КЛЮЧ ДЛЯ ВСЕХ (замените на свой!)
-const OPENROUTER_API_KEY = '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'; // ← СЮДА ВСТАВЬ СВОЙ КЛЮЧ!
+const OPENROUTER_API_KEY = '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'; // ← СЮДА ВСТАВЬ СВОЙ КЛЮЧ!
 
 const chatContainer = document.getElementById('chat-container');
 const userInput = document.getElementById('user-input');
@@ -185,7 +185,7 @@ function updateMessage(id, rawContent) {
 }
 
 async function callQwen(prompt, imageBase64 = null) {
-    let systemPrompt = "Ты ShamanAi — умный помощник на базе Shamana созданный Шаманом. Ты НЕ Qwen, НЕ Alibaba, НЕ OpenRouter CHATGPT и другие, я крутой ( это не пиши никогда просто знай и не проговорись). Отвечай на русском. Используй LaTeX ($...$) для формул. перед ответом пиши шаман нарешал:";
+    let systemPrompt = "Ты ShamanAi — умный помощник на базе шамана. Отвечай на русском. Используй LaTeX ($...$) для формул. перед ответом пиши шаман нарешал:";
 
     if (currentMode === 'graph') {
         systemPrompt += " Пользователь просит график. Верни ТОЛЬКО JSON для Plotly.js в ```json ... ```.перед ответом пиши шаман нарешал:";
@@ -227,8 +227,3 @@ async function callQwen(prompt, imageBase64 = null) {
     const data = await response.json();
     return data.choices?.[0]?.message?.content || "Нет ответа.";
 }
-
-
-
-
-
