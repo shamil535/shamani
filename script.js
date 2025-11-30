@@ -1,4 +1,4 @@
-
+const OPENROUTER_API_KEY = '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';
 
 const chatContainer = document.getElementById('chat-container');
 const userInput = document.getElementById('user-input');
@@ -227,6 +227,7 @@ async function callQwen(prompt, imageBase64 = null) {
     const data = await response.json();
     return data.choices?.[0]?.message?.content || "Нет ответа.";
 }
+
 
 
 
