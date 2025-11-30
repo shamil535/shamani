@@ -11,9 +11,10 @@ body {
     flex-direction: column;
     overflow: hidden;
     color: white;
+    position: relative;
 }
 
-/* Анимированный фиолетовый фон */
+/* Анимированный фон */
 .background-gradient {
     position: fixed;
     top: 0;
@@ -32,7 +33,55 @@ body {
     100% { background-position: 0% 50%; }
 }
 
-/* Логотип */
+/* Меню слева */
+.menu-toggle {
+    position: absolute;
+    top: 15px;
+    left: 15px;
+    z-index: 10;
+    background: rgba(0,0,0,0.3);
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    color: white;
+    font-size: 1.2rem;
+}
+
+.sidebar {
+    position: fixed;
+    top: 0;
+    left: -250px;
+    width: 250px;
+    height: 100%;
+    background: rgba(46, 2, 73, 0.95);
+    backdrop-filter: blur(10px);
+    z-index: 20;
+    transition: left 0.3s ease;
+    padding-top: 80px;
+}
+
+.sidebar.open {
+    left: 0;
+}
+
+.sidebar-link {
+    display: block;
+    padding: 15px 20px;
+    color: #ff66c4;
+    text-decoration: none;
+    font-size: 1.1rem;
+    border-bottom: 1px solid rgba(255,255,255,0.1);
+}
+
+.sidebar-link i {
+    margin-right: 10px;
+}
+
+/* Header */
 header {
     display: flex;
     justify-content: center;
@@ -60,12 +109,12 @@ header {
     font-size: 1.2rem;
 }
 
-/* Чат контейнер */
+/* Чат */
 main {
     flex: 1;
     overflow-y: auto;
     padding: 15px;
-    padding-bottom: 140px; /* Место для инпута и меню */
+    padding-bottom: 140px;
     display: flex;
     flex-direction: column;
     gap: 15px;
@@ -77,7 +126,6 @@ main {
     opacity: 0.8;
 }
 
-/* Сообщения */
 .message {
     max-width: 85%;
     padding: 12px 16px;
@@ -106,17 +154,16 @@ main {
     border-bottom-left-radius: 2px;
 }
 
-/* Изображения в чате */
 .chat-img {
     max-width: 100%;
     border-radius: 10px;
     margin-top: 5px;
 }
 
-/* Зона ввода */
+/* Ввод */
 .input-area {
     position: fixed;
-    bottom: 60px; /* Над навбаром */
+    bottom: 60px;
     left: 0;
     width: 100%;
     padding: 10px;
@@ -162,7 +209,7 @@ button:active { transform: scale(0.95); }
     cursor: pointer;
 }
 
-/* Предпросмотр картинки */
+/* Превью изображения */
 #image-preview-container {
     position: fixed;
     bottom: 120px;
@@ -187,7 +234,7 @@ button:active { transform: scale(0.95); }
     margin-top: -10px;
 }
 
-/* Нижняя навигация */
+/* Навбар */
 .bottom-nav {
     position: fixed;
     bottom: 0;
@@ -219,22 +266,18 @@ button:active { transform: scale(0.95); }
 }
 
 /* Графики и SVG */
-.plot-container {
-    width: 100%;
+.plot-container, .svg-container {
     background: white;
     border-radius: 10px;
-    overflow: hidden;
     margin-top: 10px;
+    overflow: hidden;
 }
 .svg-container {
-    background: white;
-    border-radius: 10px;
     padding: 10px;
-    margin-top: 10px;
     text-align: center;
 }
 
-/* Модальное окно */
+/* Модалка */
 .modal {
     display: none;
     position: fixed;
@@ -256,12 +299,14 @@ button:active { transform: scale(0.95); }
     text-align: center;
     border: 1px solid #a91079;
 }
-#api-key-input {
-    width: 100%;
-    padding: 10px;
-    margin: 10px 0;
-    border-radius: 5px;
+#close-modal-btn {
+    background: #a91079;
+    color: white;
     border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+    margin-top: 10px;
 }
 .small-text { font-size: 0.8rem; margin-top: 10px; }
 .small-text a { color: #ff66c4; }
