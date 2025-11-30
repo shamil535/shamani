@@ -81,7 +81,7 @@ body {
     margin-right: 10px;
 }
 
-/* Header */
+
 header {
     display: flex;
     justify-content: center;
@@ -310,3 +310,4 @@ button:active { transform: scale(0.95); }
 }
 .small-text { font-size: 0.8rem; margin-top: 10px; }
 .small-text a { color: #ff66c4; }
+
