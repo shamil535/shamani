@@ -204,27 +204,26 @@ function updateMessage(id, rawContent) {
     chatContainer.scrollTop = chatContainer.scrollHeight;
 }
 
-// --- Запрос к API Qween ---
-async function callQween(prompt) {
-    if (!apiKey) throw new Error('Нет API ключа');
+async function callQween(prompt) { // <-- Имя функции изменено на callQween и добавлен аргумент prompt
+    if (!apiKey) throw new Error('API ключ не установлен');
 
     // Предполагаемый URL для Qween API
-    const url = 'https://api.qweenai.com/v1/chat/completions';
-    
+    const url = 'https://dashscope-intl.aliyuncs.com/compatible-mode/v1/chat/completions'; // Убедитесь, что конечная точка указана правильно
+
     // Формируем системный промпт в зависимости от режима
     let systemPrompt = "Ты ShamanAi, умный помощник, работающий на Qween AI. Используй LaTeX для формул (формат $$formula$$ или $formula$). Отвечай на русском языке.";
 
     if (currentMode === 'graph') {
-        systemPrompt += " Пользователь хочет построить график. Твоя задача — сгенерировать JSON для библиотеки Plotly.js. Верни ТОЛЬКО JSON внутри блока";
-        } else if (currentMode === 'draw') {
+        systemPrompt += " Пользователь хочет построить график. Твоя задача — сгенерировать JSON для библиотеки Plotly.js. Верни ТОЛЬКО JSON внутри блока ```json ... ```";
+    } else if (currentMode === 'draw') {
         systemPrompt += " Пользователь просит нарисовать геометрическую фигуру или схему. Сгенерируй валидный SVG код внутри блока ```svg ... ```. Используй stroke='black' и fill='none' или прозрачные цвета, чтобы было видно на белом фоне. Добавляй подписи (text) внутри SVG.";
     }
 
     const requestBody = {
-        model: "qween-chat-v1", // Гипотетическая модель Qween
+        model: "qwen-plus", // Гипотетическая модель Qween
         messages: [
             { role: "system", content: systemPrompt },
-            { role: "user", content: prompt }
+            { role: "user", content: prompt } // <-- Используем аргумент prompt
         ],
         temperature: 0.7,
         stream: false 
@@ -234,7 +233,6 @@ async function callQween(prompt) {
         method: 'POST',
         headers: { 
             'Content-Type': 'application/json',
-            // Стандартный заголовок авторизации для большинства API
             'Authorization': `Bearer ${apiKey}` 
         },
         body: JSON.stringify(requestBody)
