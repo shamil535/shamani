@@ -36,7 +36,7 @@ settingsBtn.addEventListener('click', () => {
 // Боковое меню
 menuToggle.addEventListener('click', () => {
     sidebar.classList.toggle('open');
-    e.stopPropagation(); // предотвращаем срабатывание клика по документу
+     e.stopPropagation(); // предотвращаем срабатывание клика по документу
     sidebar.classList.toggle('open');
 });
 
@@ -229,4 +229,5 @@ async function callQwen(prompt, imageBase64 = null) {
     const data = await response.json();
     return data.choices?.[0]?.message?.content || "Нет ответа.";
 }
+
 
